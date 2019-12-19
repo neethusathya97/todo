@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-todo',
@@ -14,9 +15,24 @@ todos=[
   "todo 3",
 
 ]
+newTodo="";
   constructor() { }
 
   ngOnInit() {
   }
+delete(todo){
+  alert(todo);
+  
+  this.todos=this.todos.filter(function(t){
+    return t!=todo;
+  })
+}
+add(){
+  this.todos.push(this.newTodo);
+  this.newTodo=" ";
 
+}
+onTextChange(event){
+  this.newTodo=event.target.value;
+}
 }
