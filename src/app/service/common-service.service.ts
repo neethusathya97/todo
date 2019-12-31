@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class CommonServiceService {
 
   constructor() { }
-  showError{}{
+  showError(){
     alert("You have an error")
   }
 

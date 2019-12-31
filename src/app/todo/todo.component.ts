@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
+import { FormBuilder } from '@angular/forms';
+import {CommonServiceService} from '../service/common-service.service';
 
 @Component({
   selector: 'app-todo',
@@ -7,16 +8,22 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-title="Todo 1";
+title="Todo";
 todos=[
+  {name: "todo 1",discription:"discription1"},
+  {name: "todo 2",discription:"discription2"},
+  {name: "todo 3",discription:"discription3"}
+];
+newTodo=" ";
+todoForm;
 
-  "todo 1",
-  "todo 2",
-  "todo 3",
-
-]
-newTodo="";
-  constructor() { }
+  constructor(private fb: FormBuilder,
+  private commonService:CommonServiceService){ 
+    this.todoForm = fb.group({
+      name: '',
+      discription:''
+    });
+  }
 
   ngOnInit() {
   }
@@ -28,10 +35,18 @@ delete(todo){
   })
 }
 add(){
-  this.todos.push(this.newTodo);
-  this.newTodo=" ";
-
-}
+  if(!this.todoForm.valid){
+    this.commonService.showError();
+    return;
+  }
+  alert("add")
+  console.log(this.todoForm);
+  this.todos.push({
+    name: this.todoForm.value.name,
+    discription: this.todoForm.value.discription });
+    //this.newTodo="";
+  }
+ 
 onTextChange(event){
   this.newTodo=event.target.value;
 }
