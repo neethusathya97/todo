@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import {CommonServiceService} from '../service/common-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -17,8 +17,8 @@ todos=[
 newTodo=" ";
 todoForm;
 
-  constructor(private fb: FormBuilder,
-  private commonService:CommonServiceService){ 
+  constructor(private fb: FormBuilder,private router:Router)
+  { 
     this.todoForm = fb.group({
       name: '',
       discription:''
@@ -26,6 +26,9 @@ todoForm;
   }
 
   ngOnInit() {
+  }
+  view(){
+    this.router.navigate(['add']);
   }
 delete(todo){
   alert(todo);
@@ -36,7 +39,6 @@ delete(todo){
 }
 add(){
   if(!this.todoForm.valid){
-    this.commonService.showError();
     return;
   }
   alert("add")

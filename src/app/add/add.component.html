@@ -1,12 +1,8 @@
-<p>todo works</p>
 <h1>{{title}}</h1>
 <form [formGroup]="todoForm" (ngSubmit)="add()">
     <input placeholder="name" formControlName="name" name="todo" type="text" required>
     <input placeholder="discription" formControlName="discription" name="discription "type="text" required>
     <button type="submit">Add</button>
-    <a routerLink="/todo">View Todoo</a>
-    <button (click)="view()">View</button>
-
 </form>
 <table>
     <thead>
