@@ -7,6 +7,7 @@ import { TodoComponent } from './todo/todo.component';
 import {ReactiveFormsModule}from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AddComponent } from './add/add.component';
+import {HttpClientModule} from  '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddComponent } from './add/add.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   
   ],
   providers: [],
